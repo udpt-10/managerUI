@@ -6,6 +6,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import "./index.scss";
 import DialogRequest from "./DialogRequest";
 import NewDialogRequest from "./NewDialogRequest";
+import Button from 'react-bootstrap/Button';
 
 const columnsDef = [
   { field: "id", headerName: "ID", width: 50 },
@@ -139,14 +140,41 @@ const EmployeeListTable = () => {
   };
   return (
     <>
+      <div className="label">Employee List</div>
       <div className="row">
-        <div className="col label">Employee List</div>
+        <div className="col">
+          <div className="row">
+            <div className="col searchlabelName">Name: </div>
+            <div className="col">
+              <input type="text"/>
+            </div>
+          </div>
+        </div>
+        <div className="col">
+          <div className="row">
+            <div className="col searchlabelName">Position: </div>
+            <div className="col">
+              <input type="text"/>
+            </div>
+          </div>
+        </div>
+        <div className="col">
+          <div className="row">
+            <div className="col searchlabelName">Project: </div>
+            <div className="col">
+              <input type="text"/>
+            </div>
+          </div>
+        </div>
+        <div className="col btnSearch">
+          <Button variant="primary">Search</Button>
+        </div>
         <div className="col iconAdd">
           <PlaylistAddIcon onClick={clickedAddNewRequest} />
         </div>
       </div>
 
-      <div className="Checking-Table">
+      <div className="Employee-Table">
         <Box sx={{ height: 360, width: "100%" }}>
           <DataGrid
             rows={rowsDataFake}
