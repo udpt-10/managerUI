@@ -1,0 +1,17 @@
+.navigationHeader {
+    height: 50px;
+    background-color: pink;
+    display: flex;
+    justify-content: space-around;
+    .navbar {
+        padding-top: 10px;
+        padding-bottom: auto;
+        font-weight: bold;
+    }
+    .bell {
+        padding-top: 15px;
+    }
+    .user {
+        padding-top: 15px;
+    }
+}
