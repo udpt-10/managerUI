@@ -4,11 +4,12 @@
 // import SupportRequestList from "./Components/SupportRequestList";
 // import CheckingList from "./Components/Checking";
 // import AppComponent from "./Components/Apps";
-import Login from "./Components/Login";
+// import Login from "./Components/Login";
+import AppComponent from "./Components/Apps";
 function App() {
   return (
     <>
-      <Login />
+      <AppComponent />
     </>
   );
 }
