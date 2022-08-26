@@ -84,6 +84,20 @@ export const getAllLeaveRequest = () => {
   return axios.get(url, config);
 };
 
+export const editLeaveRequest = (data) => {
+    const config = {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        },
+      };
+
+    const url ="http://localhost:8002/LeaveRequest/edit";
+    delete data[0].id;
+    return axios.post(url, data[0], config);
+}
+
 export const getAllSupportRequest = () => {
   const config = {
     headers: {

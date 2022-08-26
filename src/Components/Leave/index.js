@@ -11,7 +11,7 @@ const LeaveList = () => {
         if(data){
             return;
         }
-        getAllLeaveRequest().then((res) => setData(res));
+        getAllLeaveRequest().then((res) => setData(res.data));
     })
 
     if(!data){

@@ -26,10 +26,10 @@ const DialogRequest = (props) => {
   const changeStatus = (e) => {
     let newDataState = [...dataState];
     newDataState[0].status = e.target.value;
-    if(e.target.value === "approve"){
+    if(e.target.value === "Approve"){
       newDataState[0].approved = true;
     }
-    if(e.target.value === "no_approve"){
+    if(e.target.value === "Don't Approve"){
       newDataState[0].approved = false;
     }
     setDataState(newDataState);
@@ -74,8 +74,8 @@ const DialogRequest = (props) => {
             <div className="col">Status: </div>
             <div className="col">
               <select id="status" name="Status" onChange={changeStatus}>
-                <option value="approve">Approve</option>
-                <option value="no_approve">Don't Approve</option>
+                <option value="Approve">Approve</option>
+                <option value="Don't Approve">Don't Approve</option>
               </select>
             </div>
           </div>

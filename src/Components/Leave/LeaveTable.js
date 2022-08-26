@@ -3,106 +3,48 @@ import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import Button from "react-bootstrap/Button";
 import DialogRequest from "./DialogRequest";
+import { editLeaveRequest } from "../APIs";
 const columnsDef = [
-  { field: "id", headerName: "ID", width: 50 },
-  { field: "name", headerName: "Name", width: 200, editable: true },
+  { field: "id", headerName: "ID", width: 50, hide: true},
+  { field: "employeeId", headerName: "Name", width: 200, editable: true },
   { field: "date", headerName: "Date", width: 200, editable: true },
-  { field: "period", headerName: "Period", width: 200, editable: true },
-  { field: "status", headerName: "Status", width: 200, editable: true },
   {
-    field: "request_reason",
+    field: "approveDate",
+    headerName: "Approve Date",
+    width: 200,
+    editable: true,
+  },
+  { field: "hour", headerName: "Hour", width: 200, editable: true },
+  { field: "isApproved", headerName: "Status", width: 200, editable: true },
+  {
+    field: "reason",
     headerName: "Request Reason",
     width: 200,
     editable: true,
   },
   {
-    field: "deny_reason",
+    field: "approveReason",
     headerName: "Deny Reason",
     width: 200,
     editable: true,
   },
 ];
 
-const rowsDataFake = [
-  {
-    id: "1",
-    name: "Tran Bao Khanh",
-    date: "07/30/2022",
-    period: "3d",
-    status: "sent",
-    request_reason: "Khanh dep trai",
-    deny_reason: "Null",
-  },
-  {
-    id: "2",
-    name: "Tran Bao Khanh",
-    date: "07/30/2022",
-    period: "3d",
-    status: "sent",
-    request_reason: "Khanh dep trai",
-    deny_reason: "Null",
-  },
-  {
-    id: "3",
-    name: "Tran Bao Khanh",
-    date: "07/30/2022",
-    period: "3d",
-    status: "sent",
-    request_reason: "Khanh dep trai",
-    deny_reason: "Null",
-  },
-  {
-    id: "4",
-    name: "Tran Bao Khanh",
-    date: "07/30/2022",
-    period: "3d",
-    status: "sent",
-    request_reason: "Khanh dep trai",
-    deny_reason: "Null",
-  },
-  {
-    id: "5",
-    name: "Tran Bao Khanh",
-    date: "07/30/2022",
-    period: "3d",
-    status: "sent",
-    request_reason: "Khanh dep trai",
-    deny_reason: "Null",
-  },
-  {
-    id: "6",
-    name: "Tran Bao Khanh",
-    date: "07/30/2022",
-    period: "3d",
-    status: "sent",
-    request_reason: "Khanh dep trai",
-    deny_reason: "Null",
-  },
-  {
-    id: "7",
-    name: "Tran Bao Khanh",
-    date: "07/30/2022",
-    period: "3d",
-    status: "sent",
-    request_reason: "Khanh dep trai",
-    deny_reason: "Null",
-  },
-];
 const LeaveTable = (props) => {
   const [selectData, setSelecData] = useState();
   const [openDialog, setOpenDialog] = useState(false);
 
-  const {data} = props;
+  const { data } = props;
   const onRowsSelectionHandler = (ids) => {
-    const selectedRowsData = ids.map((id) =>
-    data.find((row) => row.id === id)
-    );
+    const selectedRowsData = ids.map((id) => data.find((row) => row.id === id));
     setSelecData(selectedRowsData);
     setOpenDialog(true);
     console.log(selectedRowsData);
   };
 
-  const onSubmitClicked = () => {
+  const onSubmitClicked = (dataState) => {
+    console.log(dataState);
+    editLeaveRequest(dataState);
     setOpenDialog(false);
   };
 
@@ -153,7 +95,7 @@ const LeaveTable = (props) => {
       <div className="Leave-table">
         <Box sx={{ height: 400, width: "100%" }}>
           <DataGrid
-            rows={rowsDataFake}
+            rows={data}
             columns={columnsDef}
             pageSize={5}
             rowsPerPageOptions={[5]}
