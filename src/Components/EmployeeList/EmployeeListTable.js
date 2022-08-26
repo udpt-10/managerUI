@@ -7,125 +7,42 @@ import "./index.scss";
 import DialogRequest from "./DialogRequest";
 import NewDialogRequest from "./NewDialogRequest";
 import Button from 'react-bootstrap/Button';
+import { addNewEmployee, editEmployee } from "../APIs";
 
 const columnsDef = [
-  { field: "id", headerName: "ID", width: 50 },
-  { field: "name", headerName: "Name", width: 200, editable: true },
-  { field: "username", headerName: "UserName", width: 200, editable: true },
+  { field: "id", headerName: "STT", width: 50 },
+  { field: "employeeName", headerName: "Name", width: 200, editable: true },
+  { field: "userName", headerName: "UserName", width: 200, editable: true },
   { field: "position", headerName: "Position", width: 200, editable: true },
-  { field: "leaving", headerName: "Leaving", width: 200, editable: true },
+  { field: "email", headerName: "Email", width: 200, editable: true },
   { field: "salary", headerName: "Salary", width: 200, editable: true },
-  { field: "project", headerName: "Project", width: 200, editable: true },
+  { field: "sex", headerName: "Sex", width: 200, editable: true },
+  { field: "leavingDayBalance", headerName: "Leaving Days", width: 200, editable: true },
+  { field: "dateOfBirth", headerName: "Birth Days", width: 200, editable: true },
 ];
 
-const rowsDataFake = [
-  {
-    id: 1,
-    name: "Tran Bao Khanh",
-    username: "TBKhanh",
-    position: "Engineer",
-    leaving: 0,
-    salary: 100000000,
-    project: "CA",
-  },
-  {
-    id: 2,
-    name: "Tran Bao Khanh",
-    username: "TBKhanh",
-    position: "Engineer",
-    leaving: 0,
-    salary: 100000000,
-    project: "CA",
-  },
-  {
-    id: 3,
-    name: "Tran Bao Khanh",
-    username: "TBKhanh",
-    position: "Engineer",
-    leaving: 0,
-    salary: 100000000,
-    project: "CA",
-  },
-  {
-    id: 4,
-    name: "Tran Bao Khanh",
-    username: "TBKhanh",
-    position: "Engineer",
-    leaving: 0,
-    salary: 100000000,
-    project: "CA",
-  },
-  {
-    id: 5,
-    name: "Tran Bao Khanh",
-    username: "TBKhanh",
-    position: "Engineer",
-    leaving: 0,
-    salary: 100000000,
-    project: "CA",
-  },
-  {
-    id: 6,
-    name: "Tran Bao Khanh",
-    username: "TBKhanh",
-    position: "Engineer",
-    leaving: 0,
-    salary: 100000000,
-    project: "CA",
-  },
-  {
-    id: 7,
-    name: "Tran Bao Khanh",
-    username: "TBKhanh",
-    position: "Engineer",
-    leaving: 0,
-    salary: 100000000,
-    project: "CA",
-  },
-  {
-    id: 8,
-    name: "Tran Bao Khanh",
-    username: "TBKhanh",
-    position: "Engineer",
-    leaving: 0,
-    salary: 100000000,
-    project: "CA",
-  },
-  {
-    id: 9,
-    name: "Tran Bao Khanh",
-    username: "TBKhanh",
-    position: "Engineer",
-    leaving: 0,
-    salary: 100000000,
-    project: "CA",
-  },
-  {
-    id: 10,
-    name: "Tran Bao Khanh",
-    username: "TBKhanh",
-    position: "Engineer",
-    leaving: 0,
-    salary: 100000000,
-    project: "CA",
-  },
-];
 
-const EmployeeListTable = () => {
+
+const EmployeeListTable = (props) => {
   const [selectData, setSelecData] = useState();
   const [openDialog, setOpenDialog] = useState(false);
   const [openDialogNewRequest, setOpenDialogNewRequest] = useState(false);
 
+  const {data} = props;
+  console.log(data);
   const onRowsSelectionHandler = (ids) => {
     const selectedRowsData = ids.map((id) =>
-      rowsDataFake.find((row) => row.id === id)
+    data.find((row) => row.id === id)
     );
     setSelecData(selectedRowsData);
     setOpenDialog(true);
     console.log(selectedRowsData);
   };
 
-  const onSubmitClicked = () => {
+  const onSubmitClicked = (data) => {
+    console.log('data employeelist');
+    editEmployee(data);
+    console.log(data);
     setOpenDialog(false);
     setOpenDialogNewRequest(false);
   };
@@ -138,6 +55,14 @@ const EmployeeListTable = () => {
   const clickedAddNewRequest = () => {
     setOpenDialogNewRequest(true);
   };
+
+  const onAddNewSubmitClicked = (data) => {
+    addNewEmployee(data);
+    console.log('add new Data');
+    console.log(data);
+    setOpenDialog(false);
+    setOpenDialogNewRequest(false);
+  }
   return (
     <>
       <div className="label">Employee List</div>
@@ -177,7 +102,7 @@ const EmployeeListTable = () => {
       <div className="Employee-Table">
         <Box sx={{ height: 360, width: "100%" }}>
           <DataGrid
-            rows={rowsDataFake}
+            rows={data}
             columns={columnsDef}
             pageSize={5}
             rowsPerPageOptions={[5]}
@@ -196,7 +121,7 @@ const EmployeeListTable = () => {
 
       <NewDialogRequest
         open={openDialogNewRequest}
-        onSubmitClicked={onSubmitClicked}
+        onAddNewSubmitClicked={onAddNewSubmitClicked}
         onCancelClicked={onCancelClicked}
       />
     </>
