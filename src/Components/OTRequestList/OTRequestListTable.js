@@ -5,17 +5,14 @@ import Button from "react-bootstrap/Button";
 import "./index.scss";
 const columnsDef = [
   { field: "id", headerName: "ID", width: 50 },
-  { field: "name", headerName: "Name", width: 300, editable: true },
   { field: "date", headerName: "Date", width: 250, editable: true },
   { field: "project", headerName: "Project", width: 250, editable: true },
+  { field: "hour", headerName: "Hour", width: 250, editable: true },
 ];
 
-const rowsDataFake = [
-  { id: 1, name: "Tran Bao Khanh", date: "07/30/2022", project: "CA" },
-  { id: 2, name: "Tran Bao Khanh", date: "07/30/2022", project: "CA" },
-  { id: 3, name: "Tran Bao Khanh", date: "07/30/2022", project: "CA" },
-];
-const OTRequestListTable = () => {
+const OTRequestListTable = (props) => {
+  const { data } = props;
+
   return (
     <>
       <div className="label">OT Request List</div>
@@ -53,7 +50,7 @@ const OTRequestListTable = () => {
         <div className="col OT-table">
           <Box sx={{ height: 400, width: "100%" }}>
             <DataGrid
-              rows={rowsDataFake}
+              rows={data}
               columns={columnsDef}
               pageSize={5}
               rowsPerPageOptions={[5]}
@@ -62,8 +59,6 @@ const OTRequestListTable = () => {
             />
           </Box>
         </div>
-
-        <div className="col OT-chart"></div>
       </div>
     </>
   );
