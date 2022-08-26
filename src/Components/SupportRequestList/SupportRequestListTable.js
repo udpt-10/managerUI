@@ -4,104 +4,71 @@ import { DataGrid } from "@mui/x-data-grid";
 import Button from "react-bootstrap/Button";
 import "./index.scss";
 import DialogRequest from "./DialogRequest";
+import { editSuportRequest } from "../APIs";
 const columnsDef = [
-  { field: "id", headerName: "ID", width: 50 },
-  { field: "name", headerName: "Name", width: 300, editable: true },
-  { field: "date", headerName: "Date", width: 300, editable: true },
-  { field: "status", headerName: "Status", width: 300, editable: true },
+  { field: "id", headerName: "ID", width: 20 },
+  { field: "employeeId", headerName: "Name", width: 150, editable: true }, //from employeeID = > employeeName
+  { field: "date", headerName: "Date", width: 150, editable: true },
+  { field: "approveDate", headerName: "Approve Date", width: 150, editable: true },
+  { field: "department", headerName: "Department", width: 150, editable: true },
+  { field: "status", headerName: "Status", width: 150, editable: true },
   {
-    field: "request_reason",
+    field: "reason",
     headerName: "Request Reason",
     width: 300,
     editable: true,
   },
   {
-    field: "deny_reason",
-    headerName: "Deny Reason",
-    width: 300,
+    field: "approved",
+    headerName: "Approved",
+    width: 150,
+    editable: true,
+  },
+  {
+    field: "directorId",
+    headerName: "DirectorID", //id to name
+    width: 150,
+    editable: true,
+  },
+
+  {
+    field: "money",
+    headerName: "Money", //id to name
+    width: 150,
+    editable: true,
+  },
+  {
+    field: "describe",
+    headerName: "Describe", //id to name
+    width: 150,
     editable: true,
   },
 ];
 
-const rowsDataFake = [
-  {
-    id: 1,
-    name: "Tran Bao Khanh",
-    date: "07/30/2022",
-    status: "dont approve",
-    request_reason: "khanh dep trai",
-    deny_reason: "khanh dep trai qua",
-  },
-  {
-    id: 2,
-    name: "Tran Bao Khanh",
-    date: "07/30/2022",
-    status: "dont approve",
-    request_reason: "khanh dep trai",
-    deny_reason: "khanh dep trai qua",
-  },
-  {
-    id: 3,
-    name: "Tran Bao Khanh",
-    date: "07/30/2022",
-    status: "dont approve",
-    request_reason: "khanh dep trai",
-    deny_reason: "khanh dep trai qua",
-  },
-  {
-    id: 4,
-    name: "Tran Bao Khanh",
-    date: "07/30/2022",
-    status: "dont approve",
-    request_reason: "khanh dep trai",
-    deny_reason: "khanh dep trai qua",
-  },
-  {
-    id: 5,
-    name: "Tran Bao Khanh",
-    date: "07/30/2022",
-    status: "dont approve",
-    request_reason: "khanh dep trai",
-    deny_reason: "khanh dep trai qua",
-  },
-  {
-    id: 6,
-    name: "Tran Bao Khanh",
-    date: "07/30/2022",
-    status: "dont approve",
-    request_reason: "khanh dep trai",
-    deny_reason: "khanh dep trai qua",
-  },
-  {
-    id: 7,
-    name: "Tran Bao Khanh",
-    date: "07/30/2022",
-    status: "dont approve",
-    request_reason: "khanh dep trai",
-    deny_reason: "khanh dep trai qua",
-  },
-];
-
-const SupportRequestListTable = () => {
+const SupportRequestListTable = (props) => {
   const [selectData, setSelecData] = useState();
   const [openDialog, setOpenDialog] = useState(false);
 
+  const {data} = props;
   const onRowsSelectionHandler = (ids) => {
     const selectedRowsData = ids.map((id) =>
-      rowsDataFake.find((row) => row.id === id)
+      data.find((row) => row.id === id)
     );
     setSelecData(selectedRowsData);
     setOpenDialog(true);
-    console.log(selectedRowsData);
   };
 
-  const onSubmitClicked = () => {
+  const onSubmitClicked = (dataState) => {
+    editSuportRequest(dataState);
     setOpenDialog(false);
   };
 
   const onCancelClicked = () => {
     setOpenDialog(false);
   };
+
+  console.log('data request');
+  console.log(data);
   return (
     <>
       <div className="label">Support Request List</div>
@@ -135,10 +102,10 @@ const SupportRequestListTable = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col OT-table">
+        <div className="col Support-table">
           <Box sx={{ height: 400, width: "100%" }}>
             <DataGrid
-              rows={rowsDataFake}
+              rows={data}
               columns={columnsDef}
               pageSize={5}
               rowsPerPageOptions={[5]}

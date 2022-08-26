@@ -88,13 +88,14 @@ const rowsDataFake = [
     deny_reason: "Null",
   },
 ];
-const LeaveTable = () => {
+const LeaveTable = (props) => {
   const [selectData, setSelecData] = useState();
   const [openDialog, setOpenDialog] = useState(false);
 
+  const {data} = props;
   const onRowsSelectionHandler = (ids) => {
     const selectedRowsData = ids.map((id) =>
-      rowsDataFake.find((row) => row.id === id)
+    data.find((row) => row.id === id)
     );
     setSelecData(selectedRowsData);
     setOpenDialog(true);

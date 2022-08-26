@@ -70,3 +70,41 @@ export const getAllOTRequest = () => {
   const url = "http://localhost:8002/OTRequest/all";
   return axios.get(url, config);
 };
+
+export const getAllLeaveRequest = () => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+    },
+  };
+
+  const url = "http://localhost:8002/LeaveRequest/all";
+  return axios.get(url, config);
+};
+
+export const getAllSupportRequest = () => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+    },
+  };
+  const url = "http://localhost:8002/SupportRequest/all";
+  return axios.get(url, config);
+};
+
+export const editSuportRequest = (data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+    },
+  };
+  const url = "http://localhost:8002/SupportRequest/edit";
+  delete data[0].id;
+  return axios.post(url, data[0], config);
+};
