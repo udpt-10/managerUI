@@ -51,7 +51,7 @@ const DialogRequest = (props) => {
         <DialogTitle>{dataState[0].employeeId}</DialogTitle> 
         <DialogContent>
           <div className="row">
-            <div className="col">Name: </div>
+            <div className="col">Employee ID: </div>
             <div className="col">
               <input value={dataState[0].employeeId} readOnly />
             </div>
@@ -62,21 +62,10 @@ const DialogRequest = (props) => {
               <input value={dataState[0].date} readOnly />
             </div>
           </div>
-
-
           <div className="row">
-            <div className="col"> Approve Date: </div>
+            <div className="col">Department: </div>
             <div className="col">
-              <input value={dataState[0].approveDate} type="datetime-local" onChange={changeApproveDate}/>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col">Status: </div>
-            <div className="col">
-              <select id="status" name="Status" onChange={changeStatus}>
-                <option value="Approve">Approve</option>
-                <option value="Don't Approve">Don't Approve</option>
-              </select>
+              <input value={dataState[0].department} readOnly />
             </div>
           </div>
 
@@ -87,12 +76,57 @@ const DialogRequest = (props) => {
             </div>
           </div>
 
+
+
+          <div className="row">
+            <div className="col"> Approve Date: </div>
+            <div className="col">
+              <input value={dataState[0].approveDate} type="datetime-local" onChange={changeApproveDate}/>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col">Approve Status: </div>
+            <div className="col">
+              <select id="status" name="Status" onChange={changeStatus}>
+                <option value="Approve">Approve</option>
+                <option value="Don't Approve">Don't Approve</option>
+              </select>
+            </div>
+          </div>
+
+          
+
           <div className="row">
             <div className="col">Money: </div>
             <div className="col">
               <input value={dataState[0].money} type="number" onChange={changeMoney}/>
             </div>
           </div>
+
+          <div className="row">
+            <div className="col">Approver: </div>
+            <div className="col">
+              <input value={dataState[0].approver} type="number" onChange={changeMoney}/>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col">Director ID: </div>
+            <div className="col">
+              <input value={dataState[0].directorId} type="number" onChange={changeMoney}/>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col">Describe: </div>
+            <div className="col">
+              <input value={dataState[0].describe} type="text" onChange={changeMoney}/>
+            </div>
+          </div>
+
+
+
 
           <div className="row">
             <button onClick={() => onSubmitClicked(dataState)} className="col-btn submit">

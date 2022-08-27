@@ -6,7 +6,7 @@ import DialogRequest from "./DialogRequest";
 import { editLeaveRequest } from "../APIs";
 const columnsDef = [
   { field: "id", headerName: "ID", width: 50, hide: true},
-  { field: "employeeName", headerName: "Name", width: 200, editable: true },
+  { field: "employeeId", headerName: "Employee ID", width: 200, editable: true },
   { field: "date", headerName: "Date", width: 200, editable: true },
   {
     field: "approveDate",
@@ -14,7 +14,7 @@ const columnsDef = [
     width: 200,
     editable: true,
   },
-  { field: "hour", headerName: "Hour", width: 200, editable: true },
+  { field: "leavingType", headerName: "Leaving Type", width: 200, editable: true },
   { field: "isApproved", headerName: "Status", width: 200, editable: true },
   {
     field: "reason",
@@ -25,6 +25,18 @@ const columnsDef = [
   {
     field: "approveReason",
     headerName: "Deny Reason",
+    width: 200,
+    editable: true,
+  },
+  {
+    field: "numberDays",
+    headerName: "Number of Day Leave",
+    width: 200,
+    editable: true,
+  },
+  {
+    field: "note",
+    headerName: "Note",
     width: 200,
     editable: true,
   },

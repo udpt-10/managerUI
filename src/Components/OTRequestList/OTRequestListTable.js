@@ -6,9 +6,14 @@ import "./index.scss";
 const columnsDef = [
   { field: "id", headerName: "ID", width: 50, hide: true},
 
-  { field: "employeeName", headerName: "Name", width: 250, editable: true },
-  { field: "date", headerName: "Date", width: 400, editable: true },
-  { field: "hour", headerName: "Hour", width: 250, editable: true },
+  { field: "employeeId", headerName: "Employee ID", width: 100, editable: false },
+  { field: "date", headerName: "Date", width: 400, editable: false },
+  { field: "hour", headerName: "Hour", width: 100, editable: false },
+  { field: "reason", headerName: "Reason", width: 400, editable: false },
+  { field: "managerId", headerName: "Manager ID", width: 100, editable: true },
+  { field: "isApproved", headerName: "Approve Status", width: 100, editable: true },
+  { field: "approveReason", headerName: "Approve Reason", width: 400, editable: true },
+  { field: "approveDate", headerName: "Approve Date", width: 250, editable: false },
 ];
 
 const OTRequestListTable = (props) => {

@@ -7,42 +7,48 @@ import DialogRequest from "./DialogRequest";
 import { editSuportRequest } from "../APIs";
 const columnsDef = [
   { field: "id", headerName: "ID", width: 20, hide: true},
-  { field: "employeeName", headerName: "Name", width: 150, editable: true }, //from employeeID = > employeeName
-  { field: "date", headerName: "Date", width: 150, editable: true },
+  { field: "employeeId", headerName: "Employee ID", width: 150, editable: false }, //from employeeID = > employeeName
+  { field: "date", headerName: "Date", width: 150, editable: false },
+  { field: "department", headerName: "Department", width: 150, editable: false },
+  { field: "approver", headerName: "Approver", width: 150, editable: true },
   { field: "approveDate", headerName: "Approve Date", width: 150, editable: true },
-  { field: "department", headerName: "Department", width: 150, editable: true },
+  { field: "reason", headerName: "Reason", width: 150, editable: false },
+  { field: "directorId", headerName: "Director ID", width: 150, editable: true },
+  { field: "money", headerName: "Money", width: 150, editable: true },
   { field: "status", headerName: "Status", width: 150, editable: true },
-  {
-    field: "reason",
-    headerName: "Request Reason",
-    width: 300,
-    editable: true,
-  },
-  {
-    field: "approved",
-    headerName: "Approved",
-    width: 150,
-    editable: true,
-  },
-  {
-    field: "directorName",
-    headerName: "DirectorName", //id to name
-    width: 150,
-    editable: true,
-  },
+  { field: "describe", headerName: "Describe", width: 150, editable: true },
+  { field: "approved", headerName: "Approve Status", width: 150, editable: true },
+  // {
+  //   field: "reason",
+  //   headerName: "Request Reason",
+  //   width: 300,
+  //   editable: true,
+  // },
+  // {
+  //   field: "approved",
+  //   headerName: "Approved",
+  //   width: 150,
+  //   editable: true,
+  // },
+  // {
+  //   field: "directorName",
+  //   headerName: "DirectorName", //id to name
+  //   width: 150,
+  //   editable: true,
+  // },
 
-  {
-    field: "money",
-    headerName: "Money", //id to name
-    width: 150,
-    editable: true,
-  },
-  {
-    field: "describe",
-    headerName: "Describe", //id to name
-    width: 150,
-    editable: true,
-  },
+  // {
+  //   field: "money",
+  //   headerName: "Money", //id to name
+  //   width: 150,
+  //   editable: true,
+  // },
+  // {
+  //   field: "describe",
+  //   headerName: "Describe", //id to name
+  //   width: 150,
+  //   editable: true,
+  // },
 ];
 
 const SupportRequestListTable = (props) => {
