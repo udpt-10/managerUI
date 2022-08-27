@@ -6,13 +6,17 @@ import { getAllLeaveRequest } from "../APIs";
 const LeaveList = () => {
 
     const [data, setData] = useState();
+    const [isReload, setReload] = useState(false);
+    const reloadCallBack = () => {
+        setReload(!isReload);
 
+      };
     useEffect(() => {
         if(data){
             return;
         }
         getAllLeaveRequest().then((res) => setData(res.data));
-    })
+    }, [isReload])
 
     if(!data){
         return;
@@ -26,7 +30,7 @@ const LeaveList = () => {
       }
     return (<>
         <Navigation/>
-        <LeaveTable data={data}/>
+        <LeaveTable data={data} reloadCallBack={reloadCallBack}/>
         <Footer/>
     </>);
 };

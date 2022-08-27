@@ -34,7 +34,7 @@ const LeaveTable = (props) => {
   const [selectData, setSelecData] = useState();
   const [openDialog, setOpenDialog] = useState(false);
 
-  const { data } = props;
+  const { data, reloadCallBack } = props;
   const onRowsSelectionHandler = (ids) => {
     const selectedRowsData = ids.map((id) => data.find((row) => row.id === id));
     setSelecData(selectedRowsData);
@@ -46,6 +46,7 @@ const LeaveTable = (props) => {
     console.log(dataState);
     editLeaveRequest(dataState);
     setOpenDialog(false);
+    reloadCallBack();
   };
 
   const onCancelClicked = () => {
