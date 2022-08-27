@@ -12,6 +12,21 @@ const DialogRequest = (props) => {
     setDataState(data);
   }, [data]);
 
+  const changeMoney = (e) => {
+    let newDataState = [...dataState];
+    newDataState[0].managerId = e.target.value;
+    setDataState(newDataState);
+  }
+
+  const changeMoney1 = (e) => {
+    let newDataState = [...dataState];
+    newDataState[0].note = e.target.value;
+    setDataState(newDataState);
+  }
+
+
+  
+
   if (!dataState) {
     return;
   }
@@ -44,7 +59,7 @@ const DialogRequest = (props) => {
         <DialogTitle>{dataState[0].employeeId}</DialogTitle>
         <DialogContent>
           <div className="row">
-            <div className="col">Name: </div>
+            <div className="col">Employee ID: </div>
             <div className="col">
               <input value={dataState[0].employeeId} readOnly />
             </div>
@@ -62,9 +77,21 @@ const DialogRequest = (props) => {
             </div>
           </div>
           <div className="row">
-            <div className="col">Hour: </div>
+            <div className="col">Leaving Type: </div>
             <div className="col">
-              <input value={dataState[0].hour} readOnly />
+              <input value={dataState[0].leavingType} readOnly />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">Number of Days: </div>
+            <div className="col">
+              <input value={dataState[0].numberDays} readOnly />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">Manager ID: </div>
+            <div className="col">
+              <input value={dataState[0].managerId} type="number" onChange={changeMoney}/>
             </div>
           </div>
           <div className="row">
@@ -88,6 +115,13 @@ const DialogRequest = (props) => {
             <div className="col">Deny Reason: </div>
             <div className="col">
               <input value={dataState[0].approveReason} type="text" onChange={changeApproveReason} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col">Note: </div>
+            <div className="col">
+              <input value={dataState[0].note} type="text" onChange={changeMoney1}/>
             </div>
           </div>
 

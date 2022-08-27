@@ -28,7 +28,7 @@ const columnsDef = [
     width: 200,
     editable: true,
   },
-  {
+  { 
     field: "numberDays",
     headerName: "Number of Day Leave",
     width: 200,
@@ -37,6 +37,12 @@ const columnsDef = [
   {
     field: "note",
     headerName: "Note",
+    width: 200,
+    editable: true,
+  },
+  {
+    field: "managerId",
+    headerName: "Manager ID",
     width: 200,
     editable: true,
   },

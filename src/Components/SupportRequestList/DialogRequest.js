@@ -40,6 +40,24 @@ const DialogRequest = (props) => {
     newDataState[0].money = e.target.value;
     setDataState(newDataState);
   }
+
+  const changeMoney1 = (e) => {
+    let newDataState = [...dataState];
+    newDataState[0].approver = e.target.value;
+    setDataState(newDataState);
+  }
+
+  const changeMoney2 = (e) => {
+    let newDataState = [...dataState];
+    newDataState[0].directorId = e.target.value;
+    setDataState(newDataState);
+  }
+
+  const changeMoney3 = (e) => {
+    let newDataState = [...dataState];
+    newDataState[0].describe = e.target.value;
+    setDataState(newDataState);
+  }
   
   if (!dataState) {
     return;
@@ -107,21 +125,21 @@ const DialogRequest = (props) => {
           <div className="row">
             <div className="col">Approver: </div>
             <div className="col">
-              <input value={dataState[0].approver} type="number" onChange={changeMoney}/>
+              <input value={dataState[0].approver} type="number" onChange={changeMoney1}/>
             </div>
           </div>
 
           <div className="row">
             <div className="col">Director ID: </div>
             <div className="col">
-              <input value={dataState[0].directorId} type="number" onChange={changeMoney}/>
+              <input value={dataState[0].directorId} type="number" onChange={changeMoney2}/>
             </div>
           </div>
 
           <div className="row">
             <div className="col">Describe: </div>
             <div className="col">
-              <input value={dataState[0].describe} type="text" onChange={changeMoney}/>
+              <input value={dataState[0].describe} type="text" onChange={changeMoney3}/>
             </div>
           </div>
 
