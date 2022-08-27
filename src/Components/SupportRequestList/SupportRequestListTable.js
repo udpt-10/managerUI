@@ -6,8 +6,8 @@ import "./index.scss";
 import DialogRequest from "./DialogRequest";
 import { editSuportRequest } from "../APIs";
 const columnsDef = [
-  { field: "id", headerName: "ID", width: 20 },
-  { field: "employeeId", headerName: "Name", width: 150, editable: true }, //from employeeID = > employeeName
+  { field: "id", headerName: "ID", width: 20, hide: true},
+  { field: "employeeName", headerName: "Name", width: 150, editable: true }, //from employeeID = > employeeName
   { field: "date", headerName: "Date", width: 150, editable: true },
   { field: "approveDate", headerName: "Approve Date", width: 150, editable: true },
   { field: "department", headerName: "Department", width: 150, editable: true },
@@ -25,8 +25,8 @@ const columnsDef = [
     editable: true,
   },
   {
-    field: "directorId",
-    headerName: "DirectorID", //id to name
+    field: "directorName",
+    headerName: "DirectorName", //id to name
     width: 150,
     editable: true,
   },

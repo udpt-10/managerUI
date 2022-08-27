@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 import { addNewEmployee, editEmployee } from "../APIs";
 
 const columnsDef = [
-  { field: "id", headerName: "STT", width: 50 },
+  { field: "id", headerName: "STT", width: 50, hide: true},
   { field: "employeeName", headerName: "Name", width: 200, editable: true },
   { field: "userName", headerName: "UserName", width: 200, editable: true },
   { field: "position", headerName: "Position", width: 200, editable: true },
@@ -100,7 +100,7 @@ const EmployeeListTable = (props) => {
       </div>
 
       <div className="Employee-Table">
-        <Box sx={{ height: 360, width: "100%" }}>
+        <Box sx={{ height: 400, width: "100%" }}>
           <DataGrid
             rows={data}
             columns={columnsDef}

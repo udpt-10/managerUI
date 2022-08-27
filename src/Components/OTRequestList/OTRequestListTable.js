@@ -4,9 +4,10 @@ import { DataGrid } from "@mui/x-data-grid";
 import Button from "react-bootstrap/Button";
 import "./index.scss";
 const columnsDef = [
-  { field: "id", headerName: "ID", width: 50 },
-  { field: "date", headerName: "Date", width: 250, editable: true },
-  { field: "project", headerName: "Project", width: 250, editable: true },
+  { field: "id", headerName: "ID", width: 50, hide: true},
+
+  { field: "employeeName", headerName: "Name", width: 250, editable: true },
+  { field: "date", headerName: "Date", width: 400, editable: true },
   { field: "hour", headerName: "Hour", width: 250, editable: true },
 ];
 
